@@ -1,0 +1,38 @@
+<html ng-app="myApp">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="./angular.min.js"></script>
+    <script src="./app.js"></script>
+  </head>
+  <body class="container">
+    <!-- ng-controllerでコントローラーと紐付け -->
+    <div ng-controller="AppController">
+      <div>
+        <h1>登録フォーム</h1>
+        <!-- ng-submitで関数と紐付け -->
+        <form ng-submit="submit()">
+          <div class="form-group">
+            <label for="username">ユーザー名</label>
+            <!-- ng-inputでINPUTと紐付け -->
+            <input type="text" class="form-control" id="username" placeholder="twitterのユーザー名を入力" ng-model="username">
+          </div>
+          <button type="submit" class="btn btn-primary">登録</button>
+        </form>
+      </div>
+      <hr>
+      <div>
+        <h1>ユーザー一覧</h1>
+        <ul>
+          <!-- 繰り返したいタグにng-repeatを使う。users配列内の各要素をuserとして取り出して使う -->
+          <li style="padding: 5px" ng-repeat="user in users"> 
+            <div>
+              <!-- ng-repeat内userをタグで囲まれた範囲内で使うことができる -->
+              <a href="{{user.url}}" target="_blank">{{user.username}}</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </body>
+</html>
